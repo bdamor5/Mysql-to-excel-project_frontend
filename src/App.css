@@ -1,0 +1,16 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
+
+input{
+  width:170px !important;
+  padding:0 2%;
+}
+
+a{
+  text-decoration:none !important;
+  color:#fff !important;
+  
+}
