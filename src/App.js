@@ -12,7 +12,7 @@ const App = () => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [downloadLink,setDownloadLink] = useState(null);
+  const [downloadLink, setDownloadLink] = useState(null);
 
   // console.log(date1,date2);
 
@@ -49,21 +49,26 @@ const App = () => {
         // console.log(d1.substring(5, 7)); //month
         // console.log(d1.substring(8, 10)); //day
 
-        const res1 = await axios.post("https://mysql-to-excel-backend.herokuapp.com/setDate", {
-          fromDate: `${d1.substring(0, 4)}-${d1.substring(5, 7)}-${d1.substring(
-            8,
-            10
-          )}`,
-          toDate: `${d2.substring(0, 4)}-${d2.substring(5, 7)}-${d2.substring(
-            8,
-            10
-          )}`,
-        });
+        const res1 = await axios.post(
+          "https://mysql-to-excel-backend.herokuapp.com/setDate",
+          {
+            fromDate: `${d1.substring(0, 4)}-${d1.substring(
+              5,
+              7
+            )}-${d1.substring(8, 10)}`,
+            toDate: `${d2.substring(0, 4)}-${d2.substring(5, 7)}-${d2.substring(
+              8,
+              10
+            )}`,
+          }
+        );
 
         // console.log(res1)
 
         if (res1.status === 200) {
-          const res2 = await axios.get("https://mysql-to-excel-backend.herokuapp.com/saveToExcel");
+          const res2 = await axios.get(
+            "https://mysql-to-excel-backend.herokuapp.com/saveToExcel"
+          );
 
           // console.log(res2);
 
@@ -97,7 +102,7 @@ const App = () => {
                 // console.log(data);
                 setLoading(false);
                 setSuccess(true);
-                setDownloadLink(data.url)
+                setDownloadLink(data.url);
               })
               .catch((err) => {
                 console.error(err);
@@ -148,7 +153,8 @@ const App = () => {
               role="status"
               aria-hidden="true"
             ></span>
-            &nbsp; Saving... <br/>(may take few mins)
+            &nbsp; Saving... <br />
+            (may take few mins)
           </button>
         ) : (
           <button
@@ -164,17 +170,13 @@ const App = () => {
         )}
         {success && (
           <>
-          <h4 className="mt-3 text-success">
-            Data saved successfully!
-          </h4>
-          <button
-            type="button"
-            className="btn btn-success col-2 mt-2"
-          >
-            <a href={downloadLink} target="_blank" rel="noreferrer">View</a>
-          </button>
+            <h4 className="mt-3 text-success">Data saved successfully!</h4>
+            <a href={downloadLink} target="_blank" rel="noreferrer">
+              <button type="button" className="btn btn-success col-2 mt-2">
+                View
+              </button>
+            </a>
           </>
-          
         )}
       </div>
     </div>
