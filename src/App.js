@@ -172,7 +172,7 @@ const App = () => {
           <>
             <h4 className="mt-3 text-success">Data saved successfully!</h4>
             <a href={downloadLink} target="_blank" rel="noreferrer">
-              <button type="button" className="btn btn-success col-2 mt-2">
+              <button type="button" className="w-100 btn btn-success col-2 mt-2">
                 View
               </button>
             </a>
